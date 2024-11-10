@@ -1,0 +1,15 @@
+{
+  "name": "recursivedescent-backtracking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js",
+    "test": "jest"
+  },
+  "author": "Nhan Pham",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
