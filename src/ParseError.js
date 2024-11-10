@@ -12,7 +12,7 @@ class ParseError extends Error {
             return this.args.shift();
         });
         
-        return `${msg} at position ${this.position}`
+        return `${msg} at position ${this.pos}`
     }
 }
 

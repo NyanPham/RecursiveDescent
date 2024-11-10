@@ -11,7 +11,7 @@ class Parser {
     constructor() {}
 
     start() {
-        // throw new Error("Not implemented")
+        throw new Error("Not implemented")
     }
 
     parse(text) {
@@ -87,8 +87,8 @@ class Parser {
                 if (charRange[0] === nextChar) {
                     this.#pos += 1
                     return nextChar
-                }
-            } else if (charRange[0] <= nextChar <= charRange[2]) {
+                }   
+            } else if (charRange[0] <= nextChar && nextChar <= charRange[2]) {
                 this.#pos += 1
                 return nextChar
             }
@@ -174,9 +174,11 @@ class Parser {
 
     maybeKeyword(keywords = []) {
         const [error, value] = catchErrorTyped(() => {
-            return this.keyword(keywords)
+            const value = this.keyword(keywords)
+
+            return value;
         }, [ParseError])
-        
+
         if (error != null) return null
         return value
     }
