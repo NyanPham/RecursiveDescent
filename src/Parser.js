@@ -12,6 +12,26 @@ class Parser {
 
     start() {
         throw new Error("Not implemented")
+    }       
+
+    incPos() {
+        this.#pos += 1
+    }
+
+    get whitespaces() {
+        return this.#whitespaces
+    }
+
+    get text() {
+        return this.#text
+    }
+
+    get pos() {
+        return this.#pos
+    }   
+    
+    get len() {
+        return this.#len
     }
 
     parse(text) {
@@ -93,7 +113,7 @@ class Parser {
                 return nextChar
             }
         }
-
+        
         throw new ParseError(this.#pos + 1, 'Expected <MSG_ARG> but got <MSG_ARG>', chars == null ? 'character' : `[${chars}]`, nextChar);
     }
 
@@ -107,10 +127,6 @@ class Parser {
         for (const keyword of keywords) {
             const sIdx = this.#pos + 1
             const eIdx = sIdx + keyword.length
-
-            if (eIdx > this.#len) {
-                throw new ParseError(this.#pos + 1, 'Expected <MSG_ARG> but got end of input', keywords.join(', '));
-            }
 
             if (this.#text.slice(sIdx, eIdx) === keyword) {
                 this.#pos += keyword.length
