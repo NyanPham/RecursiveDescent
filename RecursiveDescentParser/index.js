@@ -1,8 +1,10 @@
 const BNFParser = require("./src/BNFParser")
+const EBNFParser = require("./src/EBNFParser")
 const Lexer = require("./src/Lexer")
 const LexerError = require("./src/LexerError")
 
 /* Testing the Lexer */
+console.log('LEXER:\n')
 const rules = [
     {
         regex: '\\d+',
@@ -58,8 +60,7 @@ try {
     }
 }
 
-/* Testing the BNFParser */
-const parser = new BNFParser()
+/* Testing the Parsers */
 const inputs = [
     '5 - 1 - 2',
     'set x = 5',
@@ -67,6 +68,14 @@ const inputs = [
     '(5+y)*3 + 3'
 ]
 
+console.log('BNF PARSER:\n')
+const bnfParser = new BNFParser()
 inputs.forEach(input => {
-    console.log(parser.parse(input))
+    console.log(bnfParser.parse(input))
+})
+
+console.log('EBNF PARSER:\n')
+const ebnfParser = new EBNFParser()
+inputs.forEach(input => {
+    console.log(ebnfParser.parse(input))
 })
