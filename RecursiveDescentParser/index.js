@@ -1,6 +1,8 @@
+const BNFParser = require("./src/BNFParser")
 const Lexer = require("./src/Lexer")
 const LexerError = require("./src/LexerError")
 
+/* Testing the Lexer */
 const rules = [
     {
         regex: '\\d+',
@@ -47,6 +49,7 @@ try {
     for (const tok of lexer.tokens()) {
         console.log(tok.toString())
     }
+    console.log('\n\n')
 } catch (err) {
     if (err instanceof LexerError) {
         console.log(`LexerError: ${err.message} at ${err.pos}`)
@@ -55,3 +58,15 @@ try {
     }
 }
 
+/* Testing the BNFParser */
+const parser = new BNFParser()
+const inputs = [
+    '5 - 1 - 2',
+    'set x = 5',
+    'set y = 2 * x',
+    '(5+y)*3 + 3'
+]
+
+inputs.forEach(input => {
+    console.log(parser.parse(input))
+})

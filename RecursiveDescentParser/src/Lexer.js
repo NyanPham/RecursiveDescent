@@ -41,7 +41,7 @@ class Lexer {
         this.#text = text
         this.#pos = 0
     }
-
+    
     /**
      * Get the next token from the input text
      * @return {Token|null} The next token, or null if the end of the input text has been reached
