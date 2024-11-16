@@ -1,55 +1,11 @@
 const Lexer = require("./Lexer");
 const LexerError = require("./LexerError");
+const lexRules = require("./lexRules");
 const ParseError = require("./ParseError");
 const Token = require("./Token");
 
 class EBNFParser {
-    #lexRules = [
-        {
-            regex: 'set',
-            type: 'SET'
-        },
-        {
-            regex:'\\d+',
-            type: 'NUMBER'
-        },
-        {
-            regex: '[a-zA-Z_]\\w*',
-            type: 'IDENTIFIER'
-        },
-        {
-            regex: '\\+',
-            type: '+'
-        },
-        {
-            regex: '\\-',
-            type: '-'
-        },
-        {
-            regex: '\\*',
-            type: '*'
-        },
-        {
-            regex: '\\/',
-            type: '/'
-        },
-        {
-            regex: '\\*\\*',
-            type: '**'
-        },
-        {
-            regex: '\\(',
-            type: '('
-        },
-        {
-            regex: '\\)',
-            type: ')'
-        },
-        {
-            regex: '=',
-            type: '='
-        }
-    ]
+    #lexRules = lexRules
     #lexer
     #curToken
     #varTable 

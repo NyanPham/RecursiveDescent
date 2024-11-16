@@ -2,50 +2,10 @@ const Lexer = require("./Lexer");
 const LexerError = require("./LexerError");
 const ParseError = require("./ParseError");
 const Token = require("./Token");
+const lexRules = require('./lexRules')
 
 class BNFParser {
-    #lexRules = [
-        {
-            regex: 'set',
-            type: 'SET'
-        },
-        {
-            regex:'\\d+',
-            type: 'NUMBER'
-        },
-        {
-            regex: '[a-zA-Z_]\\w*',
-            type: 'IDENTIFIER'
-        },
-        {
-            regex: '\\+',
-            type: '+'
-        },
-        {
-            regex: '\\-',
-            type: '-'
-        },
-        {
-            regex: '\\*',
-            type: '*'
-        },
-        {
-            regex: '\\/',
-            type: '/'
-        },
-        {
-            regex: '\\(',
-            type: '('
-        },
-        {
-            regex: '\\)',
-            type: ')'
-        },
-        {
-            regex: '=',
-            type: '='
-        }
-    ]
+    #lexRules = lexRules
     #lexer
     #curToken
     #varTable 
